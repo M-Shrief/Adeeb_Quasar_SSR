@@ -11,6 +11,11 @@ const routes: RouteRecordRaw[] = [
     name: "poem",
     component: () => import("pages/Poem.vue"),
   },
+  {
+    path: "/poet/:id",
+    name: "poet",
+    component: () => import("pages/Poet.vue"),
+  },
   // Always leave this as last one,
   // but you can also remove it
   {
