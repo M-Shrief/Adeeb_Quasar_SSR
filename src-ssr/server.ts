@@ -9,15 +9,15 @@
  * Make sure to yarn add / npm install (in your project root)
  * anything you import here (except for express and compression).
  */
-import express from 'express';
-import compression from 'compression';
+import express from "express";
+import compression from "compression";
 import {
   ssrClose,
   ssrCreate,
   ssrListen,
   ssrRenderPreloadTag,
   ssrServeStaticContent,
-} from 'quasar/wrappers';
+} from "quasar/wrappers";
 
 /**
  * Create your webserver and return its instance.
@@ -31,7 +31,7 @@ export const create = ssrCreate((/* { ... } */) => {
 
   // attackers can use this header to detect apps running Express
   // and then launch specifically-targeted attacks
-  app.disable('x-powered-by');
+  app.disable("x-powered-by");
 
   // place here any middlewares that
   // absolutely need to run before anything else
@@ -57,7 +57,7 @@ export const listen = ssrListen(async ({ app, port, isReady }) => {
   await isReady();
   return app.listen(port, () => {
     if (process.env.PROD) {
-      console.log('Server listening at port ' + port);
+      console.log("Server listening at port " + port);
     }
   });
 });
@@ -130,5 +130,5 @@ export const renderPreloadTag = ssrRenderPreloadTag((file) => {
     return `<link rel="preload" href="${file}" as="image" type="image/png">`;
   }
 
-  return '';
+  return "";
 });

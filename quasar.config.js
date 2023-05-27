@@ -20,8 +20,7 @@ module.exports = configure(function (/* ctx */) {
     // https://v2.quasar.dev/quasar-cli-vite/boot-files
     boot: [
       "axios",
-      { path: "pinia-plugin-persistedstate", server: false }, // this boot file gets embedded only on client-side
-      // { path: "third", client: false }, // this boot file gets embedded only on server-side
+      // { path: "pinia-plugin-persistedstate", server: false }, // this boot file gets embedded only on client-side
     ],
 
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#css
