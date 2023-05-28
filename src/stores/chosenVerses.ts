@@ -20,7 +20,9 @@ export const useChosenVerseStore = defineStore("chosenVerses", {
   actions: {
     async fetchChosenVerses() {
       try {
-        const req = await axios.get(`http://localhost:3000/api/chosenverses`);
+        const req = await axios.get(
+          `${import.meta.env.VITE_API_URL}/chosenverses`
+        );
         this.chosenVerses = req.data;
       } catch (error) {
         if (error instanceof AxiosError) {
@@ -33,7 +35,7 @@ export const useChosenVerseStore = defineStore("chosenVerses", {
     async fetchRandomChosenVerses(num: number) {
       try {
         const req = await axios.get(
-          `http://localhost:3000/api/chosenverses/random?num=${num}`
+          `${import.meta.env.VITE_API_URL}/chosenverses/random?num=${num}`
         );
         this.randomChosenVerses = req.data;
       } catch (error) {

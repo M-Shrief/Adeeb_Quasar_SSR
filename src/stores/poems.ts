@@ -23,7 +23,9 @@ export const usePoemStore = defineStore("poems", {
   actions: {
     async fetchPoems() {
       try {
-        const req = await axios.get(`http://localhost:3000/api/poems_intros`);
+        const req = await axios.get(
+          `${import.meta.env.VITE_API_URL}/poems_intros`
+        );
         this.poems = req.data;
       } catch (error) {
         if (error instanceof AxiosError) {
@@ -36,7 +38,7 @@ export const usePoemStore = defineStore("poems", {
 
     async fetchOtherPoems(id: any) {
       try {
-        let apiPoemsIntros = `http://localhost:3000/api/poems_intros`;
+        let apiPoemsIntros = `${import.meta.env.VITE_API_URL}/poems_intros`;
         let reqPoemsIntros = await axios.get(apiPoemsIntros);
 
         let poemIndex = reqPoemsIntros.data
@@ -55,7 +57,7 @@ export const usePoemStore = defineStore("poems", {
 
     async fetchPoemAndSuggestedPoems(id: any) {
       try {
-        let apiPoem = `http://localhost:3000/api/poem/${id}`;
+        let apiPoem = `${import.meta.env.VITE_API_URL}/poem/${id}`;
         let reqPoem = await axios.get(apiPoem);
         this.poem = reqPoem.data;
 

@@ -21,7 +21,7 @@ export const useProseStore = defineStore("proses", {
   actions: {
     async fetchProses() {
       try {
-        const req = await axios.get(`http://localhost:3000/api/proses`);
+        const req = await axios.get(`${import.meta.env.VITE_API_URL}/proses`);
         this.proses = req.data;
       } catch (error) {
         if (error instanceof AxiosError) {
@@ -35,7 +35,7 @@ export const useProseStore = defineStore("proses", {
     async fetchRandomProses(num: number) {
       try {
         const req = await axios.get(
-          `http://localhost:3000/api/proses/random?num=${num}`
+          `${import.meta.env.VITE_API_URL}/proses/random?num=${num}`
         );
         this.randomProses = req.data;
       } catch (error) {
