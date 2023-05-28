@@ -1,7 +1,7 @@
 <template>
   <div id="selected-prints" dir="rtl">
-    <p><router-link :to="partner ? '/partners/ordering' : '/ordering'"
-        class="title">للطباعة</router-link> </p>
+    <router-link :to="partner ? '/partners/ordering' : '/ordering'" class="title">
+      للطباعة </router-link>
     <ul class="prints">
       <li class="prints-item" v-for="print in getPrints" :key="print._id"
         @dblclick="removePrint(print)">
@@ -45,6 +45,7 @@ $secondaryColor: #2c3e50;
 
 #selected-prints {
   position: fixed;
+  height: 4rem;
   bottom: 0.3rem;
   right: 0.1rem;
   display: flex;
@@ -66,7 +67,8 @@ $secondaryColor: #2c3e50;
   }
 
   .title {
-    margin-left: 0.3rem;
+    margin: auto 0;
+    font-size: 1rem;
     font-weight: 600;
     color: rgba($color: $mainColor, $alpha: 0.8);
     text-decoration: none;
@@ -99,6 +101,7 @@ $secondaryColor: #2c3e50;
     .prints-item {
       padding: 0.2rem;
       margin-left: 0.3rem;
+      height: 1.5rem;
       background: rgba($color: $mainColor, $alpha: 0.8);
       color: $secondaryColor;
       cursor: pointer;

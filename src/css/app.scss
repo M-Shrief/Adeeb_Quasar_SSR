@@ -1,1 +1,12 @@
 // app global css in SCSS form
+* {
+  line-height: normal;
+  letter-spacing: normal;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  background: #e0f2e9;
+}

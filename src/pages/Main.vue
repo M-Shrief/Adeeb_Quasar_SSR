@@ -1,7 +1,7 @@
 <template>
   <main dir="rtl">
-    <h1>أديب</h1>
-    <p>لطباعة الادب العربي شعراً ونثراً</p>
+    <h1 class="name">أديب</h1>
+    <p class="object">لطباعة الادب العربي شعراً ونثراً</p>
     <div class="container">
       <!-- Add Pagination -->
       <ShowCasePoems :poems="getPoems" :grid="'grid'">
@@ -77,16 +77,17 @@ function addPrint(print: Print) {
 <style lang="scss" scoped>
 @import '../css/mixins.scss';
 
-h1,
-p {
+.name,
+.object {
   text-align: center;
 }
 
-h1 {
+.name {
   font-size: 4rem;
+  font-weight: 600;
 }
 
-p {
+.object {
   font-size: 1.5rem;
 }
 
@@ -103,6 +104,10 @@ p {
   border-radius: 1.5rem;
   width: 50%;
   margin: 1rem auto;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: normal;
 }
 
 .poems-title {

@@ -20,7 +20,6 @@ import Navbar from './components/Navbar.vue';
 </script>
 
 <style lang="scss">
-@import './css/base.scss';
 @import './css/mixins.scss';
 
 @include fade-transition;
