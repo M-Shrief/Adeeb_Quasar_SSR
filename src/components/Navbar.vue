@@ -3,14 +3,18 @@
   <nav id="nav-raw" dir="rtl">
     <router-link to="/" id="logo">أديب</router-link>
     <div class="nav-row-group">
-      <router-link to="/ordering" class="nav-item"
-        active-class="active">طلباتك</router-link>
-      <router-link to="/history" class="nav-item" active-class="active">مراجعة
+      <router-link :to="partner ? '/partners/ordering' : '/ordering'"
+        class="nav-item" active-class="active">طلباتك</router-link>
+      <router-link :to="partner ? '/partners/history' : '/history'"
+        class="nav-item" active-class="active">مراجعة
         الطلبات</router-link>
-      <router-link to="/about" class="nav-item"
+      <router-link :to="'/about'" class="nav-item"
         active-class="active">قصتنا</router-link>
 
-      <router-link to="/partners" class="nav-item" active-class="active">كن
+      <span v-if="partner" class="partner-name">{{ partner.name }}</span>
+      <span v-if="partner" class="nav-item" @click="logout">تسجيل
+        الخروج</span>
+      <router-link to="/partners" class="nav-item" active-class="active" v-else>كن
         شريكاً</router-link>
     </div>
   </nav>
@@ -20,22 +24,22 @@
 import { useRouter } from 'vue-router';
 import { computed } from '@vue/reactivity';
 // stores
-// import { useOrderStore } from '@/stores/orders';
-// import { usePartnerStore } from '@/stores/partners';
+import { useOrderStore } from '../stores/orders';
+import { usePartnerStore } from '../stores/partners';
 
-// const router = useRouter();
+const router = useRouter();
 
-// const parnterStore = usePartnerStore();
-// const partner = computed(() => {
-//   return parnterStore.getPartner
-// })
+const parnterStore = usePartnerStore();
+const partner = computed(() => {
+  return parnterStore.getPartner
+})
 
-// const orderStore = useOrderStore();
-// async function logout() {
-//   parnterStore.logout()
-//   orderStore.reset()
-//   router.push('/');
-// }
+const orderStore = useOrderStore();
+async function logout() {
+  parnterStore.logout()
+  orderStore.reset()
+  router.push('/');
+}
 
 </script>
 

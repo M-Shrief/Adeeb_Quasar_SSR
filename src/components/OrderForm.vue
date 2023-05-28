@@ -1,7 +1,7 @@
 <template>
   <form @submit.prevent="confirmOrder" dir="rtl">
     <div id="confirmation">
-      <!-- <div id="customer-details" v-if="partner">
+      <div id="customer-details" v-if="partner">
         <div class="container">
           <p>الاسم: {{ partner.name }}</p>
         </div>
@@ -19,9 +19,8 @@
             </option>
           </select>
         </div>
-      </div> -->
-      <!-- <div id="customer-details" v-else> -->
-      <div id="customer-details">
+      </div>
+      <div id="customer-details" v-else>
         <div class="container">
           <label for="name">الاسم: </label>
           <input type="text" id="name" name="name" required minlength="5"
@@ -77,7 +76,7 @@ import { computed } from '@vue/reactivity';
 import { useRouter } from 'vue-router';
 // stores
 import { useOrderStore } from '../stores/orders';
-// import { usePartnerStore } from '../stores/partners';
+import { usePartnerStore } from '../stores/partners';
 // types
 import type { Product, Order, Print, ProductGroup, Partner } from '../stores/__types__';
 
@@ -117,43 +116,43 @@ function deleteFromProductGroup(productGroup: ProductGroup, print: Print) {
 
 // check this https://stackoverflow.com/questions/12989741/the-property-value-does-not-exist-on-value-of-type-htmlelement
 const orderStore = useOrderStore();
-// const partnerStore = usePartnerStore();
-// const partner = computed(() => {
-//   return partnerStore.getPartner;
-// });
+const partnerStore = usePartnerStore();
+const partner = computed(() => {
+  return partnerStore.getPartner;
+});
 
 async function confirmOrder() {
   let name, phone, address, order;
-  // if (partner.value) {
-  //   name = partner.value.name
-  //   phone = partner.value.phone
-  //   address = (document.getElementById("address") as HTMLInputElement).value;
+  if (partner.value) {
+    name = partner.value.name
+    phone = partner.value.phone
+    address = (document.getElementById("address") as HTMLInputElement).value;
 
-  //   order = {
-  //     partner: partner.value._id,
-  //     name,
-  //     phone,
-  //     address,
-  //     products: props.productGroups
-  //   } as Order;
-  //   await orderStore.newOrder(order)
-  //   orderStore.reset()
-  //   router.push('/partners/history');
-  // } else {
-  name = (document.getElementById("name") as HTMLInputElement).value;
-  phone = (document.getElementById("phone") as HTMLInputElement).value;
-  address = (document.getElementById("address") as HTMLInputElement).value;
+    order = {
+      partner: partner.value._id,
+      name,
+      phone,
+      address,
+      products: props.productGroups
+    } as Order;
+    await orderStore.newOrder(order)
+    orderStore.reset()
+    router.push('/partners/history');
+  } else {
+    name = (document.getElementById("name") as HTMLInputElement).value;
+    phone = (document.getElementById("phone") as HTMLInputElement).value;
+    address = (document.getElementById("address") as HTMLInputElement).value;
 
-  order = {
-    name,
-    phone,
-    address,
-    products: props.products
-  } as Order;
-  await orderStore.newOrder(order)
-  orderStore.reset()
-  router.push('/history');
-  // }
+    order = {
+      name,
+      phone,
+      address,
+      products: props.products
+    } as Order;
+    await orderStore.newOrder(order)
+    orderStore.reset()
+    router.push('/history');
+  }
 };
 </script>
 
