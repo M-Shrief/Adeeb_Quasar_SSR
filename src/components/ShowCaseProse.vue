@@ -45,6 +45,10 @@ $mainColor: #f6b352;
 $secondaryColor: #1f2124;
 
 .title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: normal;
   text-align: center;
   background-color: $secondaryColor;
   color: $mainColor;

@@ -1,6 +1,7 @@
 <template>
   <header>
     <Navbar />
+    <HttpPopUp />
   </header>
   <router-view v-slot="{ Component }">
     <transition name="fade" appear>
@@ -17,6 +18,7 @@
 
 <script setup lang="ts">
 import Navbar from './components/Navbar.vue';
+import HttpPopUp from './components/NotificationsCenter/HttpPopUp.vue';
 </script>
 
 <style lang="scss">
