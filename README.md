@@ -1,24 +1,27 @@
-# Adeeb Quasar (adeeb-quasar-ssr)
+# All in TypeScript, front-end for "Adeeb أديب" developed to be **SSR** with Quasar, Vuejs, Pinia and vue-router.
 
-Adeeb with SSR
+**Overview**:
 
-## Install the dependencies
-```bash
-yarn
-# or
-npm install
-```
+- \_./css file for our app.scss and mixins.scss
 
-### Start the app in development mode (hot-code reloading, error reporting, etc.)
-```bash
-quasar dev
-```
+- _./components_ file for our contained and reusable components across the app.
 
+- _./composables_ file for our contained and reusable stateful logic across the app.
 
-### Build the app for production
-```bash
-quasar build
-```
+- _./pages_ separated pages to separate logic groups from each other, and map
+  each group of logic to specific route.
 
-### Customize the configuration
-See [Configuring quasar.config.js](https://v2.quasar.dev/quasar-cli-vite/quasar-config-js).
+- _./router_ file to contain our routing.
+
+- _./stores_ file for to manage our app state, logic and api requests, while
+  leveraging its reactivity.
+
+- _App.vue_ to hold and render our router-view.
+
+- _quasar.config.js_ used to set configuration for our app.
+
+### Working on:
+
+- Adjust styles because it was corrupted with quasar.scss.
+- handle cookies and authentication better at the front end.
+- persist pinia's data on the same session
