@@ -190,6 +190,7 @@ async function prepareProse() {
     .qoute {
       font-size: 1rem;
       font-weight: 400;
+      margin: 1rem auto;
     }
 
     .qoute {

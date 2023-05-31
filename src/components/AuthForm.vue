@@ -64,6 +64,8 @@ async function onSubmit() {
 </script>
 
 <style lang="scss" scoped>
+@import '../css/mixins.scss';
+
 $secondaryColor: #D5DBB3;
 $mainColor: #1f2124;
 
@@ -80,6 +82,18 @@ $mainColor: #1f2124;
 
   h3 {
     text-align: center;
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: normal;
+
+    @include mQ($breakpoint-md) {
+      font-size: 1.2rem;
+    }
+
+    @include mQ($breakpoint-sm) {
+      font-size: 1rem;
+    }
   }
 
   .input-cont {

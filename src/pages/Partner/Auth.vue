@@ -6,7 +6,8 @@
     <AuthForm />
     <aside>
       <!-- need something simple like: islamic arts, a transition for list-items and on. -->
-      <h3>سجل الان للاستفادة من جميع الخدمات المُقدمة من المتنبي</h3>
+      <h3>سجل الان للاستفادة من جميع الخدمات المُقدمة من المتنبي
+      </h3>
       <ul>
         <li>سهولة إعداد الطلبات وتعديلها</li>
         <li>متابعة الطلبات فى جميع مراحل تنفيذها</li>
@@ -45,7 +46,6 @@ onBeforeMount(() => {
 
 h3 {
   text-align: center;
-  font-size: 2rem;
 }
 
 #register {
@@ -58,6 +58,10 @@ h3 {
 aside {
   h3 {
     font-size: 1.6rem;
+  }
+
+  li {
+    font-size: 1rem;
   }
 }
 
