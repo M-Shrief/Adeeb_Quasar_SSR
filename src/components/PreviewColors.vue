@@ -26,6 +26,8 @@ defineEmits(['toColor']);
   align-items: center;
 
   p {
+    margin: 0 auto;
+
     @include mQ($breakpoint-md) {
       font-size: 0.9rem;
     }

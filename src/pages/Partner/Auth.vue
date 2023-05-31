@@ -1,5 +1,5 @@
 <template>
-  <h3>يَسعد المتنبي بتقديم الخدمات للشركات والتجار والعملاء المميزين.</h3>
+  <h3>يَسعد المتنبي بتقديم خدمات للشركات والتجار والعملاء المميزين.</h3>
   <section id="register">
 
     <!-- show if the user will authenticate, hide if the user won't -->

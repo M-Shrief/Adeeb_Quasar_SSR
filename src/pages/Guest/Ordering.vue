@@ -2,7 +2,7 @@
   <main id="printing" dir="rtl">
     <div class="container">
       <section id="preview">
-        <h3>اختر من الاشعار للطباعة</h3>
+        <h3 class="title">اختر من الاشعار للطباعة</h3>
         <PrintCustomization :colors="colors"
           @fontColor="(color: string) => fontColor = color"
           @backgroundColor="(color: string) => backgroundColor = color" />
@@ -25,7 +25,7 @@
     </div>
 
     <section id="prints">
-      <h3>المختار للطباعة</h3>
+      <h3 class="title">المختار للطباعة</h3>
       <div id="randoms">
         <div id="buttons">
           <button @click="getRandomPoetry(1)">شعر عشوائي</button>
@@ -109,11 +109,21 @@ function getRandomProse(num: number) {
     grid-template-columns: 70% 30%;
   }
 
-  h3 {
+  .container {
+    min-height: 50vh;
+  }
+
+  #preview>.title,
+  #prints>.title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: normal;
     text-align: center;
+    margin: 1rem auto 0;
 
     @include mQ($breakpoint-md) {
-      font-size: 1.1rem;
+      font-size: 1.2rem;
     }
 
     @include mQ($breakpoint-sm) {
@@ -121,17 +131,14 @@ function getRandomProse(num: number) {
     }
   }
 
-  .container {
-    min-height: 50vh;
-  }
-
   #preview {
     position: relative;
     display: flex;
     flex-direction: column;
     margin: 1rem;
-    border-radius: 1.5rem;
     background: #1f2124;
+    // margin: 0.3rem auto;
+
 
     .verse,
     .qoute {
@@ -140,12 +147,24 @@ function getRandomProse(num: number) {
       width: 70%;
       margin: 0 auto;
 
+      p {
+        margin: 1rem auto;
+      }
+
       @include mQ($breakpoint-md) {
         font-size: 0.9rem;
+
+        p {
+          margin: 0.6rem auto;
+        }
       }
 
       @include mQ($breakpoint-sm) {
         font-size: 0.8rem;
+
+        p {
+          margin: 0.3rem auto;
+        }
       }
     }
 
@@ -200,23 +219,23 @@ function getRandomProse(num: number) {
       @include submit-btn
     }
 
-    #partners-link {
-      position: absolute;
-      left: 0.8rem;
-      top: 0.8rem;
-      color: #f6b352;
-      border: 2px solid #f6b352;
-      background-color: #1f2124;
-      padding: 0.5rem;
-      border-radius: 1.5rem;
-      margin: 0.1rem;
-      text-decoration: none;
+    // #partners-link {
+    //   position: absolute;
+    //   left: 0.8rem;
+    //   top: 0.8rem;
+    //   color: #f6b352;
+    //   border: 2px solid #f6b352;
+    //   background-color: #1f2124;
+    //   padding: 0.5rem;
+    //   border-radius: 1.5rem;
+    //   margin: 0.1rem;
+    //   text-decoration: none;
 
-      &:hover {
-        color: #1f2124;
-        background: #f6b352;
-      }
-    }
+    //   &:hover {
+    //     color: #1f2124;
+    //     background: #f6b352;
+    //   }
+    // }
   }
 
   #prints {
@@ -234,6 +253,16 @@ function getRandomProse(num: number) {
       border-radius: 5px;
       padding: 0.5rem;
       margin: 0.5rem;
+
+      .qoute,
+      .verse {
+        margin: 0.5rem 0;
+        font-size: 1rem;
+
+        @include mQ($breakpoint-sm) {
+          font-size: 0.8rem;
+        }
+      }
 
       .qoute {
         text-align: center;

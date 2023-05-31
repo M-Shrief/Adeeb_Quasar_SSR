@@ -28,9 +28,9 @@
         <div>
           <p>العنوان</p><span>{{ order.address }}</span>
         </div>
-        <div>
+        <!-- <div>
           <p>تاريخ الطلب</p><span>{{ order.createdAt.slice(0, 10) }}</span>
-        </div>
+        </div> -->
         <p><span>{{ order.reviewed ? 'تمت المراجعة' : 'غير مراجع' }}</span></p>
         <p><span>{{ order.completed ? 'تم التسليم' : 'لم يتم التسليم' }}</span>
         </p>
@@ -79,6 +79,10 @@ $mainColor: #e0f2e9;
 $secondaryColor: #1f2124;
 
 h2 {
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: normal;
   text-align: center;
 }
 
