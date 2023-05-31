@@ -156,7 +156,7 @@ $secondaryColor: #fbe6c2;
   .one-verse {
     font-size: 1.1rem;
     font-weight: 600;
-    margin-top: 3rem;
+    margin: 3rem 0 1.5rem;
 
     .first {
       margin-right: 0.4rem;
@@ -168,23 +168,24 @@ $secondaryColor: #fbe6c2;
 
     @include mQ($breakpoint-lg) {
       font-size: 0.95rem;
-      margin-top: 1.2rem;
+      margin: 2.6rem 0 1.2rem;
     }
 
     @include mQ($breakpoint-md) {
       font-size: 0.9rem;
-      margin-top: 1rem;
+      margin: 2.2rem 0 1rem;
     }
 
     @include mQ($breakpoint-sm) {
       font-size: 0.8rem;
-      margin-top: 0.5rem;
+      margin: 1.5rem 0 0.5rem;
     }
   }
 
   .two-verse {
     font-size: 1rem;
     font-weight: 600;
+    margin: 1.5rem 0;
 
     .first {
       margin-right: 0.4rem;
@@ -196,14 +197,17 @@ $secondaryColor: #fbe6c2;
 
     @include mQ($breakpoint-lg) {
       font-size: 0.95rem;
+      margin: 1.2rem 0;
     }
 
     @include mQ($breakpoint-md) {
       font-size: 0.8rem;
+      margin: 1rem 0;
     }
 
     @include mQ($breakpoint-sm) {
       font-size: 0.8rem;
+      margin: 0.7rem 0;
     }
   }
 

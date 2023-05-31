@@ -86,23 +86,27 @@ function addPrint(print: Print) {
   border-radius: 1.5rem;
   width: 50%;
   margin: 1rem auto;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: normal;
 
   @include mQ($breakpoint-lg) {
+    font-size: 1.1rem;
     padding: 0.3rem;
     margin: 0.7rem auto;
-    font-size: 1rem;
   }
 
   @include mQ($breakpoint-md) {
+    font-size: 1rem;
     padding: 0.2rem;
     margin: 0.5rem auto;
-    font-size: 1rem;
   }
 
   @include mQ($breakpoint-sm) {
+    font-size: 1rem;
     padding: 0.1rem;
     margin: 0.3rem auto;
-    font-size: 1rem;
   }
 }
 </style>

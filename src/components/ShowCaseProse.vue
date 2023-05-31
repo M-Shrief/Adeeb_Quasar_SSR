@@ -108,17 +108,21 @@ $secondaryColor: #1f2124;
     text-align: center;
     font-size: 1.2rem;
     padding-bottom: 0.8rem;
+    margin: 1.5rem 0;
 
     @include mQ($breakpoint-lg) {
       font-size: 1.1rem;
+      margin: 1.2rem 0;
     }
 
     @include mQ($breakpoint-md) {
       font-size: 1rem;
+      margin: 1rem 0;
     }
 
     @include mQ($breakpoint-sm) {
       font-size: 0.8rem;
+      margin: 0.7rem 0;
     }
   }
 

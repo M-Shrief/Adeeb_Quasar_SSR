@@ -7,7 +7,7 @@
         </router-link>
 
         <ShowCasePoems :poems="getPoems">
-          <h2>قصائد اخري</h2>
+          <h2 class="poems-title">قصائد اخري</h2>
         </ShowCasePoems>
       </section>
       <ShowCasePoem :verses="getPoem.verses"
@@ -74,9 +74,13 @@ function addPrint(print: Print) {
     text-decoration: none;
   }
 
-  h2 {
+  .poems-title {
     color: #f6b352;
     text-align: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: normal;
 
     @include mQ($breakpoint-lg) {
       font-size: 1.1rem;

@@ -1,6 +1,6 @@
 <template>
   <section v-if="details" class="poet" dir="rtl">
-    <h2>{{ details.name }} - {{ details.time_period }}</h2>
+    <h2 class="title">{{ details.name }} - {{ details.time_period }}</h2>
     <p class="bio">{{ details.bio }}</p>
   </section>
 </template>
@@ -33,6 +33,13 @@ $secondaryColor: #FBE6C2;
   margin: 0.7rem 0.3rem;
   overflow: visible;
 
+  .title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: normal;
+  }
+
   .bio {
     font-size: 1.2rem;
   }
@@ -41,7 +48,7 @@ $secondaryColor: #FBE6C2;
     padding: 0.5rem;
     margin: 0.5rem 0.2rem;
 
-    h2 {
+    title {
       font-size: 1.2rem;
     }
 
@@ -54,7 +61,7 @@ $secondaryColor: #FBE6C2;
     padding: 0.5rem;
     margin: 0.5rem 0.2rem;
 
-    h2 {
+    title {
       font-size: 1rem;
     }
 
@@ -67,8 +74,8 @@ $secondaryColor: #FBE6C2;
     padding: 0.3rem;
     margin: 0.3rem 0.1rem;
 
-    h2 {
-      font-size: 1rem;
+    title {
+      font-size: 0.8rem;
     }
 
     .bio {
