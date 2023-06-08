@@ -1,9 +1,9 @@
 <template>
-  <div v-for="print in getPrints" :key="print._id" class="print-item">
+  <div v-for="print in getPrints" :key="print.id" class="print-item">
     <!-- Assigning poetry(2verses) || poetry(1verse) or prose -->
     <div @click="$emit('print', print)">
       <!-- if selected from ShowCasePoetry -->
-      <div v-if="print.verses" v-for="verse in print.verses" :key="verse._id"
+      <div v-if="print.verses" v-for="verse in print.verses" :key="verse.id"
         class="verse">
         <p>{{ verse.first }}</p>
         <p dir="ltr">{{ verse.sec }}</p>

@@ -2,7 +2,7 @@
   <main>
     <div class="container" dir="rtl">
       <section id="related-data" v-if="getPoem.poet">
-        <router-link :to="'/poet/' + getPoem.poet._id" class="link">
+        <router-link :to="'/poet/' + getPoem.poet.id" class="link">
           <ShowCasePoet :details="getPoem.poet" />
         </router-link>
 
@@ -11,7 +11,7 @@
         </ShowCasePoems>
       </section>
       <ShowCasePoem :verses="getPoem.verses"
-        @print="(poemVerse: Verse) => addPrint({ poem: getPoem._id, verses: [poemVerse] } as Print)" />
+        @print="(poemVerse: Verse) => addPrint({ poem: getPoem.id, verses: [poemVerse] } as Print)" />
     </div>
     <SelectedPrints />
   </main>

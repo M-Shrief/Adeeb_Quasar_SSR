@@ -21,9 +21,9 @@
     </PrintCustomization>
 
     <div class="preview-prints">
-      <div v-for="print in getPrints" :key="print._id" class="print-item"
+      <div v-for="print in getPrints" :key="print.id" class="print-item"
         :style="{ color: fontColor, background: backgroundColor, border: `1px solid ${fontColor}` }">
-        <div v-if="print.verses" v-for="verse in print.verses" :key="verse._id"
+        <div v-if="print.verses" v-for="verse in print.verses" :key="verse.id"
           class="verse">
           <p>{{ verse.first }}</p>
           <p dir="ltr">{{ verse.sec }}</p>

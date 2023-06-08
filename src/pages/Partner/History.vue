@@ -1,7 +1,7 @@
 <template>
   <section id="history">
     <h3>تاريخ طلبات الاستاذ {{ (partner as Partner).name }}</h3>
-    <div v-if="getOrders" v-for="order in getOrders" :key="order._id"
+    <div v-if="getOrders" v-for="order in getOrders" :key="order.id"
       class="order">
       <div class="order-details">
         <div>
@@ -24,7 +24,7 @@
               طبعات</p>
           </div>
           <div class="group-prints">
-            <div v-for="print in productGroup.prints" :key="print._id"
+            <div v-for="print in productGroup.prints" :key="print.id"
               class="group-print"
               :style="{ color: productGroup.fontColor, background: productGroup.backgroundColor }">
               <p v-if="print.verses"> {{ print.verses[0].first }}...</p>
@@ -57,7 +57,7 @@ const getOrders = computed(() => {
 });
 
 onMounted(() => {
-  let id = (partner.value as Partner)._id;
+  let id = (partner.value as Partner).id;
   orderStore.fetchPartnerOrders(id);
 })
 

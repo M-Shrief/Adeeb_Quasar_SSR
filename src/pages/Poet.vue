@@ -3,18 +3,19 @@
   <main>
     <div v-if="getPoet" dir="rtl">
       <div class="container">
-        <ShowCasePoet :details="getPoet.details" />
+        <ShowCasePoet
+          :details="{ id: getPoet.id, name: getPoet.name, bio: getPoet.bio, time_period: getPoet.time_period }" />
 
-        <ShowCasePoems :poems="getPoet.authoredPoems">
+        <ShowCasePoems :poems="getPoet.poems">
           <h3 class="poems-title">قصائده</h3>
         </ShowCasePoems>
       </div>
 
       <!-- Add Pagination for poetry and proses -->
-      <ShowCasePoetry :chosen-verses="getPoet.authoredChosenVerses" dir="rtl"
+      <ShowCasePoetry :chosen-verses="getPoet.chosenVerses" dir="rtl"
         :grid="'grid-poet'" @print="(print: Print) => addPrint(print)" />
 
-      <ShowCaseProse :proses="getPoet.authoredProses" :grid="'grid-poet'"
+      <ShowCaseProse :proses="getPoet.proses" :grid="'grid-poet'"
         @print="(print: Print) => addPrint(print)" />
     </div>
     <SelectedPrints />

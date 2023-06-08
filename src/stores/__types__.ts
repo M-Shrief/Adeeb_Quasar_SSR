@@ -1,26 +1,24 @@
 export interface Verse {
-  _id: string;
+  id: string;
   first: string;
   sec: string;
 }
 
 export interface Poet {
-  details: {
-    _id: string;
-    name: string;
-    time_period: string;
-    bio: string;
-    reviewed: boolean;
-  };
-  authoredPoems: Poem[];
-  authoredChosenVerses: ChosenVerse[];
-  authoredProses: Prose[];
+  id: string;
+  name: string;
+  time_period: string;
+  bio: string;
+  reviewed: boolean;
+  poems: Poem[];
+  chosenVerses: ChosenVerse[];
+  proses: Prose[];
 }
 
 export interface Poem {
-  _id: string;
+  id: string;
   intro: string;
-  poet: Poet['details'];
+  poet: Poet;
   verses: Verse[];
   reviewed: boolean;
   createdAt: string;
@@ -28,8 +26,8 @@ export interface Poem {
 }
 
 export interface ChosenVerse {
-  _id: string;
-  poet: Poet['details'];
+  id: string;
+  poet: Poet;
   poem: string | Poem;
   tags: string;
   verses: Verse[];
@@ -37,8 +35,8 @@ export interface ChosenVerse {
 }
 
 export interface Prose {
-  _id: string;
-  poet: Poet['details'];
+  id: string;
+  poet: Poet;
   tags: string;
   qoute: string;
   reviewed: boolean;
@@ -47,8 +45,8 @@ export interface Prose {
 }
 
 export interface Print {
-  _id: string;
-  peot?: string | Poet['details'];
+  id: string;
+  peot?: string | Poet;
   poem?: string | Poem;
   reviewed: boolean;
   tags?: string;
@@ -59,14 +57,14 @@ export interface Print {
 }
 
 export interface Product {
-  _id: string;
+  id: string;
   print: Print;
   fontType: string;
   fontColor: string;
   backgroundColor: string;
 }
 export interface ProductGroup {
-  _id: string;
+  id: string;
   prints: Print[];
   fontType: string;
   fontColor: string;
@@ -74,7 +72,7 @@ export interface ProductGroup {
 }
 
 export interface Partner {
-  _id: string;
+  id: string;
   name: string;
   phone: string;
   address: string;
@@ -82,7 +80,7 @@ export interface Partner {
 }
 
 export interface Order {
-  _id: string;
+  id: string;
   partner?: string;
   products: Product[] | ProductGroup[];
   name: string;

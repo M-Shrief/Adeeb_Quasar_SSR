@@ -1,4 +1,5 @@
 import { defineStore } from "pinia";
+// Types
 import type { Print } from "./__types__";
 
 export const usePrintStore = defineStore("prints", {
@@ -28,8 +29,8 @@ export const usePrintStore = defineStore("prints", {
     },
     removePrint(print: Print) {
       let printIndex = this.getPrints
-        .map((verse) => verse._id)
-        .indexOf(print._id);
+        .map((verse) => verse.id)
+        .indexOf(print.id);
       this.getPrints.splice(printIndex, 1);
     },
   },

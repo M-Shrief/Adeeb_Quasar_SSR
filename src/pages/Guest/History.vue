@@ -17,7 +17,7 @@
       <button type="submit">تأكـيد</button>
     </form>
 
-    <div v-for="order in getOrders" :key="order._id" class="order">
+    <div v-for="order in getOrders" :key="order.id" class="order">
       <div class="order-details">
         <div>
           <p>الاسم</p><span>{{ order.name }}</span>

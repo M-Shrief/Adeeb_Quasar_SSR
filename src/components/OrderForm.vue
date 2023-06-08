@@ -40,7 +40,7 @@
 
       <div id="products">
         <div v-for="product in products" class="product-details"
-          :key="product.print._id"
+          :key="product.print.id"
           :style="{ color: product.fontColor, background: product.backgroundColor }"
           @dblclick="deleteProduct(products as Product[], product)">
           <p>{{ product.fontType }}</p>
@@ -56,7 +56,7 @@
             <p>{{ productGroup.prints.length }} طبعات</p>
           </div>
           <div class="group-prints">
-            <div v-for="print in productGroup.prints" :key="print._id"
+            <div v-for="print in productGroup.prints" :key="print.id"
               class="group-print"
               :style="{ color: productGroup.fontColor, background: productGroup.backgroundColor }"
               @dblclick="deleteFromProductGroup(productGroup, print)">
@@ -95,12 +95,12 @@ const props = defineProps({
 });
 
 function deleteProduct(products: Product[], product: Product) {
-  let productIndex = products.map(product => product.print._id).indexOf(product.print._id);
+  let productIndex = products.map(product => product.print.id).indexOf(product.print.id);
   products.splice(productIndex, 1);
 }
 
 function deletePrint(productGroup: ProductGroup, print: Print) {
-  let printIndex = productGroup.prints.map(print => print._id).indexOf(print._id);
+  let printIndex = productGroup.prints.map(print => print.id).indexOf(print.id);
   productGroup.prints.splice(printIndex, 1);
 }
 
@@ -129,7 +129,7 @@ async function confirmOrder() {
     address = (document.getElementById("address") as HTMLInputElement).value;
 
     order = {
-      partner: partner.value._id,
+      partner: partner.value.id,
       name,
       phone,
       address,

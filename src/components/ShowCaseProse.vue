@@ -2,11 +2,11 @@
   <section id="proses">
     <h2 class="title">مختارات نثرية</h2>
     <div :class="grid">
-      <div v-for="prose in proses" :key="prose._id" class="prose-item">
+      <div v-for="prose in proses" :key="prose.id" class="prose-item">
         <p class="qoute">{{ prose.qoute }}</p>
         <div class="justify">
           <router-link v-if="!(route.name === 'poet')"
-            :to="'/poet/' + prose.poet._id" class="details">{{
+            :to="'/poet/' + prose.poet.id" class="details">{{
               prose.poet.name
             }}</router-link>
           <button @click="$emit('print', prose)" class="print-button">

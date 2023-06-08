@@ -42,7 +42,7 @@ export const usePoemStore = defineStore("poems", {
         let reqPoemsIntros = await axios.get(apiPoemsIntros);
 
         let poemIndex = reqPoemsIntros.data
-          .map((poem: Poem) => poem._id)
+          .map((poem: Poem) => poem.id)
           .indexOf(id);
         reqPoemsIntros.data.splice(poemIndex, 1);
         this.poems = reqPoemsIntros.data;

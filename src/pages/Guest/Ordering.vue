@@ -6,8 +6,8 @@
         <PrintCustomization :colors="colors"
           @fontColor="(color: string) => fontColor = color"
           @backgroundColor="(color: string) => backgroundColor = color" />
-        <div v-if="preview.verses" v-for="verse in preview.verses"
-          :key="verse._id" class="verse" id="print"
+        <div v-if="preview.verses" v-for="verse in preview.verses" :key="verse.id"
+          class="verse" id="print"
           :style="{ color: fontColor, background: backgroundColor }">
           <p>{{ verse.first }}</p>
           <p dir="ltr">{{ verse.sec }}</p>
@@ -34,7 +34,7 @@
         <div v-if="randomPrint">
           <div @click="preview = randomPrint">
             <div v-if="randomPrint.verses" v-for="verse in randomPrint.verses"
-              :key="verse._id" class="verse">
+              :key="verse.id" class="verse">
               <p>{{ verse.first }}</p>
               <p dir="ltr">{{ verse.sec }}</p>
             </div>

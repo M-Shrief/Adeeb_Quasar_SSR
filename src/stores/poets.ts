@@ -7,12 +7,12 @@ import { useAxiosError } from "../composables/error";
 export const usePoetStore = defineStore("poets", {
   state: () => {
     return {
-      poets: [] as Poet["details"][],
+      poets: [] as Poet[],
       poet: null as Poet | null,
     };
   },
   getters: {
-    getPoets(state): Poet["details"][] {
+    getPoets(state): Poet[] {
       return state.poets;
     },
     getPoet(state): Poet | null {

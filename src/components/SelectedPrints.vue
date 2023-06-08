@@ -3,7 +3,7 @@
     <router-link :to="partner ? '/partners/ordering' : '/ordering'" class="title">
       للطباعة </router-link>
     <ul class="prints">
-      <li class="prints-item" v-for="print in getPrints" :key="print._id"
+      <li class="prints-item" v-for="print in getPrints" :key="print.id"
         @dblclick="removePrint(print)">
         <!-- poetry -->
         <p v-if="print.verses">{{ print.verses[0].first }}..</p>
