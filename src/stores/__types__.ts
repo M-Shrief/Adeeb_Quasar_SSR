@@ -80,14 +80,14 @@ export interface Partner {
 }
 
 export interface Order {
-  id: string;
+  id?: string;
   partner?: string;
   products: Product[] | ProductGroup[];
   name: string;
   phone: string;
   address: string;
-  reviewed: boolean;
-  completed: boolean;
-  createdAt: string;
-  updatedAt: string;
+  reviewed?: boolean;
+  completed?: boolean;
+  createdAt?: string;
+  updatedAt?: string;
 }

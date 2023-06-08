@@ -26,12 +26,14 @@ export const usePartnerStore = defineStore("partners", {
         axios.defaults.headers.common["Authorization"] =
           "Bearer " + req.data.accessToken;
         this.partner = req.data.partner;
+        return true;
       } catch (error) {
         if (error instanceof AxiosError) {
           useAxiosError(error);
-          return;
+          return false;
         }
         alert(error);
+        return false;
       }
     },
     async login(partner: Partner) {
@@ -42,12 +44,14 @@ export const usePartnerStore = defineStore("partners", {
         axios.defaults.withCredentials = true;
         axios.defaults.headers.common["Authorization"] =
           "Bearer " + req.data.accessToken;
+        return true;
       } catch (error) {
         if (error instanceof AxiosError) {
           useAxiosError(error);
-          return;
+          return false;
         }
         alert(error);
+        return false;
       }
     },
     async logout() {

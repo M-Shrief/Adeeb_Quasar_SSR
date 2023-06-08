@@ -7,13 +7,8 @@
 // and localize client errors close to the relative component
 // should be extendible to show successfull notification like purchassing.
 
-/**
- * Let's start to show pop up error for fallen server requests
- * making sure that the app doesn't crash
- * charactaristics: red on the bottom Left
- * */
-import { ref } from 'vue';
-import type { AxiosError } from 'axios';
+import { ref } from "vue";
+import type { AxiosError } from "axios";
 
 export let error = ref();
 

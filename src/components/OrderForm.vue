@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="confirmOrder" dir="rtl">
+  <Form @submit="confirmOrder" dir="rtl">
     <div id="confirmation">
       <div id="customer-details" v-if="partner">
         <div class="container">
@@ -23,18 +23,19 @@
       <div id="customer-details" v-else>
         <div class="container">
           <label for="name">الاسم: </label>
-          <input type="text" id="name" name="name" required minlength="5"
-            maxlength="20" />
+          <Field name="name" id="name" class="field" :rules="nameRules" />
+          <ErrorMessage name="name" class="error" />
         </div>
         <div class="container">
           <label for="phone">الهاتف: </label>
-          <input type="text" id="phone" name="phone" required minlength="8"
-            maxlength="18" />
+          <Field name="phone" id="phone" class="field" :rules="phoneRules" />
+          <ErrorMessage name="phone" class="error" />
         </div>
         <div class="container">
           <label for="address">العنوان: </label>
-          <input type="text" id="address" name="address" required minlength="8"
-            maxlength="70" />
+          <Field name="address" id="address" class="field"
+            :rules="addressRules" />
+          <ErrorMessage name="address" class="error" />
         </div>
       </div>
 
@@ -68,18 +69,22 @@
       </div>
     </div>
     <button type="submit">تأكيد الطلب</button>
-  </form>
+  </Form>
 </template>
 
 <script lang="ts" setup>
 import { computed } from '@vue/reactivity';
 import { useRouter } from 'vue-router';
+// Validation
+import { Form, Field, ErrorMessage } from 'vee-validate';
+import { nameRules, phoneRules, addressRules } from '../forms.schema'
 // stores
 import { useOrderStore } from '../stores/orders';
 import { usePartnerStore } from '../stores/partners';
 // types
 import type { Product, Order, Print, ProductGroup, Partner } from '../stores/__types__';
-
+// Composables
+import { useAxiosError } from '../composables/error';
 const router = useRouter();
 
 const props = defineProps({
@@ -121,12 +126,12 @@ const partner = computed(() => {
   return partnerStore.getPartner;
 });
 
-async function confirmOrder() {
-  let name, phone, address, order;
+async function confirmOrder(values: any) {
+  let order: Order;
   if (partner.value) {
-    name = partner.value.name
-    phone = partner.value.phone
-    address = (document.getElementById("address") as HTMLInputElement).value;
+    const name = partner.value.name
+    const phone = partner.value.phone
+    const address = (document.getElementById("address") as HTMLInputElement).value;
 
     order = {
       partner: partner.value.id,
@@ -134,21 +139,16 @@ async function confirmOrder() {
       phone,
       address,
       products: props.productGroups
-    } as Order;
+    };
     await orderStore.newOrder(order)
     orderStore.reset()
     router.push('/partners/history');
-  } else {
-    name = (document.getElementById("name") as HTMLInputElement).value;
-    phone = (document.getElementById("phone") as HTMLInputElement).value;
-    address = (document.getElementById("address") as HTMLInputElement).value;
 
+  } else {
     order = {
-      name,
-      phone,
-      address,
+      ...values,
       products: props.products
-    } as Order;
+    };
     await orderStore.newOrder(order)
     orderStore.reset()
     router.push('/history');
@@ -171,9 +171,8 @@ form {
   #customer-details {
     color: $mainColor;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-around;
-    align-items: center;
 
     .container {
       font-size: 1.1rem;
@@ -181,17 +180,22 @@ form {
       margin-right: 0.2rem;
       margin-top: 0.4rem;
 
-      input[type='text'] {
+      .field {
         background: rgba($color: $mainColor, $alpha: 1);
         box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
         border: none;
-        border-radius: 1rem;
-
+        border-radius: 0.5rem;
+        width: 25%;
       }
 
       select {
         background-color: $mainColor;
         border: 1px solid $secondaryColor;
+      }
+
+      .error {
+        color: #c80815;
+        margin-right: 1rem;
       }
     }
 
@@ -199,7 +203,7 @@ form {
       padding: 0.1rem;
       margin-top: 0.1rem;
 
-      input[type='text'] {
+      .field {
         font-size: 0.8rem;
       }
     }
@@ -208,7 +212,7 @@ form {
       padding: 0.3rem;
       margin-top: 0.3rem;
 
-      input[type='text'] {
+      .field {
         font-size: 0.7rem;
       }
     }

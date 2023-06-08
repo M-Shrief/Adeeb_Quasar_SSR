@@ -1,63 +1,68 @@
 <template>
   <section id="auth-form">
     <h3>{{ isRegistered ? "تسجيل الدخول" : "تسجيل حساب جديد" }} </h3>
-    <form method="POST" @submit.prevent="() => onSubmit()">
+    <Form @submit="onSubmit">
       <div v-if="!isRegistered" class="input-cont">
         <label for="name">الاسم: </label>
-        <input type="text" name="name" id="name" required>
+        <Field name="name" id="name" :rules="nameRules" />
+        <ErrorMessage name="name" class="error" />
       </div>
       <div v-if="!isRegistered" class="input-cont">
         <label for="address">العنوان: </label>
-        <input type="text" name="address" id="address" required>
+        <Field name="address" id="address" :rules="addressRules" />
+        <ErrorMessage name="address" class="error" />
       </div>
       <div class="input-cont">
         <label for="phone">رقم الهاتف: </label>
-        <input type="text" name="phone" id="phone" required>
+        <Field name="phone" id="phone" :rules="phoneRules" />
+        <ErrorMessage name="phone" class="error" />
       </div>
       <div class="input-cont">
         <label for="password">كلمة السر: </label>
-        <input type="password" name="password" id="password" required>
+        <Field type="password" name="password" id="password"
+          :rules="passwordRules" />
+        <ErrorMessage name="password" class="error" />
       </div>
       <button type="submit">التأكيد</button>
-    </form>
+    </Form>
     <button id="toggle" @click="isRegistered = !isRegistered">
-      {{ isRegistered ? "تسجيل حساب جديد" : "تسجيل الدخول" }}</button>
+      {{ !isRegistered ? "تسجيل الدخول" : "تسجيل حساب جديد" }}
+    </button>
   </section>
 </template>
 
+
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import { useRouter } from 'vue-router';
 // stores
 import { usePartnerStore } from '../stores/partners';
-// types
-import type { Partner } from '../stores/__types__';
+// Validation
+import { Form, Field, ErrorMessage } from 'vee-validate';
+import { nameRules, phoneRules, addressRules, passwordRules } from '../forms.schema'
+// Composables
+import { useAxiosError } from '../composables/error';
 
 const isRegistered = ref(true);
 
 const router = useRouter();
 const partnerStore = usePartnerStore();
-
-async function onSubmit() {
-  let partner;
+const partner = computed(() => {
+  return partnerStore.getPartner;
+})
+async function onSubmit(values: any) {
   if (isRegistered.value) {
-    partner = {
-      phone: (document.getElementById('phone') as HTMLInputElement).value,
-      password: (document.getElementById('password') as HTMLInputElement).value,
-    } as Partner;
-    await partnerStore.login(partner)
-      .then(() => router.push('/'))
-      .catch((err: any) => alert('Invalid information'));
+    await partnerStore.login(values)
+      .then(() => {
+        if (partner.value) router.push('/');
+      })
+      .catch(error => useAxiosError(error));
   } else {
-    partner = {
-      name: (document.getElementById('name') as HTMLInputElement).value,
-      address: (document.getElementById('address') as HTMLInputElement).value,
-      phone: (document.getElementById('phone') as HTMLInputElement).value,
-      password: (document.getElementById('password') as HTMLInputElement).value,
-    } as Partner;
-    await partnerStore.signup(partner)
-      .then(() => router.push('/'))
-      .catch((err: any) => alert('Invalid information'));
+    await partnerStore.signup(values)
+      .then(() => {
+        if (partner.value) router.push('/');
+      })
+      .catch(err => alert('Invalid information'));
   }
 }
 
@@ -86,6 +91,7 @@ $mainColor: #1f2124;
     font-weight: 500;
     line-height: normal;
     letter-spacing: normal;
+    margin-top: -0.3rem;
 
     @include mQ($breakpoint-md) {
       font-size: 1.2rem;
@@ -110,6 +116,11 @@ $mainColor: #1f2124;
     }
   }
 
+  .error {
+    color: #c80815;
+    margin-right: 1rem;
+  }
+
   button {
     background-color: $secondaryColor;
     color: $mainColor;
@@ -121,8 +132,9 @@ $mainColor: #1f2124;
   }
 
   button[type='submit'] {
-    position: relative;
+    position: absolute;
     right: 45%;
+    bottom: 0.5rem;
   }
 
   #toggle {
