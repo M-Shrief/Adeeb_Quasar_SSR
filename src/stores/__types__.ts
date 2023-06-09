@@ -45,7 +45,7 @@ export interface Prose {
 }
 
 export interface Print {
-  id: string;
+  id?: string;
   peot?: string | Poet;
   poem?: string | Poem;
   reviewed: boolean;

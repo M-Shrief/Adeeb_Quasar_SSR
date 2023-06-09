@@ -40,8 +40,8 @@
       </div>
 
       <div id="products">
-        <div v-for="product in products" class="product-details"
-          :key="product.print.id"
+        <div v-for="product, index in products" class="product-details"
+          :key="index"
           :style="{ color: product.fontColor, background: product.backgroundColor }"
           @dblclick="deleteProduct(products as Product[], product)">
           <p>{{ product.fontType }}</p>
@@ -57,7 +57,7 @@
             <p>{{ productGroup.prints.length }} طبعات</p>
           </div>
           <div class="group-prints">
-            <div v-for="print in productGroup.prints" :key="print.id"
+            <div v-for="print, index in productGroup.prints" :key="index"
               class="group-print"
               :style="{ color: productGroup.fontColor, background: productGroup.backgroundColor }"
               @dblclick="deleteFromProductGroup(productGroup, print)">
@@ -83,8 +83,6 @@ import { useOrderStore } from '../stores/orders';
 import { usePartnerStore } from '../stores/partners';
 // types
 import type { Product, Order, Print, ProductGroup, Partner } from '../stores/__types__';
-// Composables
-import { useAxiosError } from '../composables/error';
 const router = useRouter();
 
 const props = defineProps({
