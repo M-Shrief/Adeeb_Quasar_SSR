@@ -22,6 +22,5 @@
 
 ### Working on:
 
-- Adjust styles because it was corrupted with quasar.scss.
 - handle cookies and authentication better at the front end.
 - persist pinia's data on the same session
