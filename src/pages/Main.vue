@@ -61,11 +61,12 @@ const getProses = computed(() => {
 });
 
 onMounted(() => {
-  poemsStore.fetchPoems();
-  poetsStore.fetchPoets();
-  chosenVersesStore.fetchChosenVerses();
-  proseStore.fetchProses();
+  if (!getPoems.value.length) poemsStore.fetchPoems();
+  if (!getPoets.value.length) poetsStore.fetchPoets();
+  if (!getChosenVerses.value.length) chosenVersesStore.fetchChosenVerses();
+  if (!getProses.value.length) proseStore.fetchProses();
 });
+
 
 const printStore = usePrintStore();
 function addPrint(print: Print) {
