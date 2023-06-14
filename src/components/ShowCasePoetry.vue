@@ -14,7 +14,9 @@
           ? 'القصيدة الكاملة'
           : chosenVerse.poet.name + ' - القصيدة الكاملة'
         }}</router-link>
-        <button @click="$emit('print', chosenVerse)" class="print-button">
+        <button
+          @click="$emit('print', { id: chosenVerse.id, verses: chosenVerse.verses })"
+          class="print-button">
           اضف للطباعة
         </button>
       </div>

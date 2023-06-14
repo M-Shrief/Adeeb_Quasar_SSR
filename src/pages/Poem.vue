@@ -10,6 +10,7 @@
           <h2 class="poems-title">قصائد اخري</h2>
         </ShowCasePoems>
       </section>
+      <!-- make print the same interface like chosenVerses -->
       <ShowCasePoem :verses="getPoem.verses"
         @print="(poemVerse: Verse) => addPrint({ poem: getPoem.id, verses: [poemVerse] } as Print)" />
     </div>

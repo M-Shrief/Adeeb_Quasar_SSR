@@ -28,10 +28,6 @@
           <p>{{ verse.first }}</p>
           <p dir="ltr">{{ verse.sec }}</p>
         </div>
-        <div v-else-if="print.first" class="verse">
-          <p>{{ print.first }}</p>
-          <p dir="ltr">{{ print.sec }}</p>
-        </div>
         <div v-else-if="print.qoute" class="qoute">
           <p>{{ print.qoute }}</p>
         </div>
