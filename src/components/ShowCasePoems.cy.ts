@@ -1,7 +1,7 @@
 import ShowCasePoems from './ShowCasePoems.vue';
 
-describe('<ShowCasePoems />', () => {
-  it('renders', () => {
+describe("render a group of poems' intros", () => {
+  it('two samples of poems intros, one with poetInfo and the other without it', () => {
     // see: https://on.cypress.io/mounting-vue
     cy.mount(ShowCasePoems, {
       props: {

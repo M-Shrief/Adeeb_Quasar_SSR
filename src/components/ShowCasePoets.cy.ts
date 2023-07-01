@@ -1,7 +1,7 @@
 import ShowCasePoets from './ShowCasePoets.vue';
 
-describe('<ShowCasePoets />', () => {
-  it('renders', () => {
+describe('Poets', () => {
+  it('renders poets name with attr to his page', () => {
     // see: https://on.cypress.io/mounting-vue
     cy.mount(ShowCasePoets, {
       props: {
