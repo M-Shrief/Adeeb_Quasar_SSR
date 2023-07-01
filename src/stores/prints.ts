@@ -19,7 +19,8 @@ export const usePrintStore = defineStore("prints", {
   },
   actions: {
     addPrint(print: Print) {
-      if (!this.getPrints.includes(print)) {
+      const printsIds = this.prints.map(printItem => printItem.id);
+      if (!printsIds.includes(print.id)) {
         this.prints.push(print);
       }
     },
