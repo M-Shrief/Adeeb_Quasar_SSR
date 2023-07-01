@@ -1,8 +1,18 @@
-import PreviewColors from './components/PreviewColors.vue'
+import PreviewColors from './PreviewColors.vue';
 
 describe('<PreviewColors />', () => {
   it('renders', () => {
     // see: https://on.cypress.io/mounting-vue
-    cy.mount(PreviewColors)
-  })
-})
+    const onColorSpy = cy.spy().as('onColorSpy');
+    cy.mount(PreviewColors, {
+      props: {
+        onColor: onColorSpy,
+        colors: ['#000'],
+      },
+    });
+
+    cy.get('div>.color').click();
+    cy.get('@onColorSpy').should('have.been.calledWith', '#000');
+    cy.get('@onColorSpy').should('be.calledOnce');
+  });
+});
