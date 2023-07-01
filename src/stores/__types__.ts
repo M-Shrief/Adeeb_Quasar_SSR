@@ -83,6 +83,6 @@ export interface Order {
   address: string;
   reviewed?: boolean;
   completed?: boolean;
-  createdAt: string;
+  createdAt?: string;
   updatedAt?: string;
 }

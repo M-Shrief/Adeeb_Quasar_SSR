@@ -21,19 +21,9 @@
     </PrintCustomization>
 
     <div class="preview-prints">
-      <div v-for="print in getPrints" :key="print.id" class="print-item"
-        :style="{ color: fontColor, background: backgroundColor, border: `1px solid ${fontColor}` }">
-        <div v-if="print.verses" v-for="verse in print.verses" :key="verse.id"
-          class="verse">
-          <p>{{ verse.first }}</p>
-          <p dir="ltr">{{ verse.sec }}</p>
-        </div>
-        <div v-else-if="print.qoute" class="qoute">
-          <p>{{ print.qoute }}</p>
-        </div>
-        <button :style="{ color: backgroundColor, background: fontColor }"
-          @click="removePrint(print)">X</button>
-      </div>
+      <ShowCasePrints :prints="getPrints"
+        :colors="[computed(() => fontColor as string), computed(() => backgroundColor as string)]"
+        @remove="(print) => removePrint(print)" />
     </div>
     <button @click="addProductGroup(getPrints, [fontColor, backgroundColor])">
       اضافة الطلبات</button>
@@ -46,6 +36,7 @@ import { computed, ref } from 'vue'
 // components
 import PrintCustomization from '../../components/PrintCustomization.vue';
 import OrderForm from '../../components/OrderForm.vue';
+import ShowCasePrints from '../../components/ShowCasePrints.vue';
 // stores
 import { useChosenVerseStore } from "../../stores/chosenVerses";
 import { useProseStore } from "../../stores/proses";
