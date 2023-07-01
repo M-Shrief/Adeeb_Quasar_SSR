@@ -12,9 +12,10 @@
       </section>
       <!-- make print the same interface like chosenVerses -->
       <ShowCasePoem :verses="getPoem.verses"
-        @print="(poemVerse: Verse) => addPrint({ poem: getPoem.id, verses: [poemVerse] } as Print)" />
-    </div>
-    <SelectedPrints />
+      @print="(poemVerse: Verse) => addPrint({ poem: getPoem.id, ...poemVerse })" />
+      </div>
+      <SelectedPrints :prints="getPrints" @remove="(print) => removePrint(print)"
+      :is-partner="isPartner" />
   </main>
 </template>
 
@@ -24,6 +25,7 @@ import { useRoute } from 'vue-router';
 // stores
 import { usePoemStore } from '../stores/poems';
 import { usePrintStore } from '../stores/prints';
+import { usePartnerStore } from '../stores/partners';
 // components
 import ShowCasePoems from '../components/ShowCasePoems.vue';
 import ShowCasePoem from '../components/ShowCasePoem.vue';
@@ -58,6 +60,18 @@ const printsStore = usePrintStore();
 function addPrint(print: Print) {
   return printsStore.addPrint(print);
 }
+const getPrints = computed(() => {
+  return printsStore.getPrints;
+});
+function removePrint(print: Print) {
+  return printsStore.removePrint(print);
+}
+
+
+const partnerStore = usePartnerStore();
+const isPartner = computed(() => {
+  return partnerStore.getPartner ? true : false;
+})
 </script>
 
 

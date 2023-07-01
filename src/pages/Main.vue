@@ -18,7 +18,8 @@
       <ShowCaseProse :proses="getProses" :routeName="'main'"
         @print="(print: Print) => addPrint(print)" />
     </div>
-    <SelectedPrints />
+    <SelectedPrints :prints="getPrints" @remove="(print) => removePrint(print)"
+      :is-partner="isPartner" />
   </main>
 </template>
 <script lang="ts" setup>
@@ -29,6 +30,7 @@ import { usePoetStore } from '../stores/poets';
 import { useChosenVerseStore } from '../stores/chosenVerses';
 import { useProseStore } from '../stores/proses';
 import { usePrintStore } from '../stores/prints';
+import { usePartnerStore } from '../stores/partners';
 // Types
 import type { Print } from '../stores/__types__';
 
@@ -67,11 +69,21 @@ onMounted(() => {
   if (!getProses.value.length) proseStore.fetchProses();
 });
 
-
-const printStore = usePrintStore();
+const printsStore = usePrintStore();
+const getPrints = computed(() => {
+  return printsStore.getPrints;
+});
 function addPrint(print: Print) {
-  return printStore.addPrint(print);
+  return printsStore.addPrint(print);
 }
+function removePrint(print: Print) {
+  return printsStore.removePrint(print);
+}
+
+const partnerStore = usePartnerStore();
+const isPartner = computed(() => {
+  return partnerStore.getPartner ? true : false;
+})
 </script>
 
 

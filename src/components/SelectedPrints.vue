@@ -1,10 +1,10 @@
 <template>
   <div id="selected-prints" dir="rtl">
-    <router-link :to="partner ? '/partners/ordering' : '/ordering'" class="title">
+    <router-link :to="isPartner ? '/partners/ordering' : '/ordering'" class="title">
       للطباعة </router-link>
     <ul class="prints">
-      <li class="prints-item" v-for="print in getPrints" :key="print.id"
-        @dblclick="removePrint(print)">
+      <li class="prints-item" v-for="print in (prints as Print[])"
+        :key="print.id" @dblclick="$emit('remove', print)">
         <!-- poetry -->
         <p v-if="print.verses">{{ print.verses[0].first }}..</p>
         <!-- prose -->
@@ -15,25 +15,20 @@
 </template>
 
 <script lang="ts" setup>
-import { computed } from 'vue';
-// stores
-import { usePrintStore } from '../stores/prints';
-import { usePartnerStore } from '../stores/partners';
 // types
 import type { Print } from '../stores/__types__';
 
-const partnerStore = usePartnerStore();
-const partner = computed(() => {
-  return partnerStore.getPartner;
+defineProps({
+  prints: {
+    types: [] as Print[],
+    required: true
+  },
+  isPartner: {
+    type: Boolean,
+    required: true
+  }
 })
 
-const printsStore = usePrintStore();
-const getPrints = computed(() => {
-  return printsStore.getPrints;
-});
-function removePrint(print: Print) {
-  return printsStore.removePrint(print);
-}
 </script>
 
 <style lang="scss" scoped>
