@@ -12,8 +12,7 @@
         active-class="active">قصتنا</router-link>
 
       <span v-if="partner" class="partner-name">{{ partner.name }}</span>
-      <span v-if="partner" class="nav-item" @click="logout">تسجيل
-        الخروج</span>
+      <span v-if="partner" class="nav-item" @click="$emit('logout')">تسجيل الخروج</span>
       <router-link to="/partners" class="nav-item" active-class="active" v-else>كن
         شريكاً</router-link>
     </div>
@@ -21,26 +20,11 @@
 </template>
 
 <script lang="ts" setup>
-import { useRouter } from 'vue-router';
-import { computed } from '@vue/reactivity';
-// stores
-import { useOrderStore } from '../stores/orders';
-import { usePartnerStore } from '../stores/partners';
-
-const router = useRouter();
-
-const parnterStore = usePartnerStore();
-const partner = computed(() => {
-  return parnterStore.getPartner
-})
-
-const orderStore = useOrderStore();
-async function logout() {
-  parnterStore.logout()
-  orderStore.reset()
-  router.push('/');
-}
-
+import { inject } from 'vue';
+// Types
+import type { Partner } from '../stores/__types__'
+const partner = inject('partner') as Partner
+defineEmits(['logout']);
 </script>
 
 <style lang="scss" scoped>

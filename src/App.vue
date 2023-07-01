@@ -1,6 +1,6 @@
 <template>
   <header>
-    <Navbar />
+    <Navbar @logout="logout" />
     <HttpPopUp />
   </header>
   <router-view v-slot="{ Component }">
@@ -11,14 +11,30 @@
   <footer>
     <p>
       Copyright &copy; 2022 |
-      <a href="#" title="Github profile" class="profile">M. Shrief</a>
+      <a href="#" title="Github profile" id="profile">M. Shrief</a>
     </p>
   </footer>
 </template>
 
 <script setup lang="ts">
+import { defineAsyncComponent, computed, provide } from 'vue';
+import { useRouter } from 'vue-router';
+// Stores
+import { usePartnerStore } from './stores/partners';
+// components
 import Navbar from './components/Navbar.vue';
-import HttpPopUp from './components/NotificationsCenter/HttpPopUp.vue';
+// import Footer from './components/Footer.vue';
+const HttpPopUp = defineAsyncComponent(() => import('./components/NotificationsCenter/HttpPopUp.vue'))
+const router = useRouter();
+const parnterStore = usePartnerStore();
+const partner = computed(() => {
+  return parnterStore.getPartner
+})
+provide('partner', partner);
+async function logout() {
+  parnterStore.logout()
+  router.push('/');
+}
 </script>
 
 <style lang="scss">
@@ -32,8 +48,8 @@ footer {
   font-size: 1.2rem;
   font-weight: 700;
 
-  .profile {
-    color: #004e64;
+  #profile {
+    color: #f6b352;
     text-decoration: none;
   }
 

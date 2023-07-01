@@ -2,6 +2,8 @@ import { defineStore } from "pinia";
 import axios, { AxiosError } from "axios";
 // types
 import type { Partner } from "./__types__";
+// Stores
+import { useOrderStore } from './orders';
 // Composables
 import { useAxiosError } from "../composables/error";
 export const usePartnerStore = defineStore("partners", {
@@ -55,6 +57,8 @@ export const usePartnerStore = defineStore("partners", {
       }
     },
     async logout() {
+      const orderStore = useOrderStore();
+      orderStore.reset();
       axios.defaults.headers.common["Authorization"] = undefined;
       this.partner = null;
       axios.defaults.withCredentials = false;
