@@ -3,8 +3,8 @@
     <router-link :to="isPartner ? '/partners/ordering' : '/ordering'" class="title">
       للطباعة </router-link>
     <ul class="prints">
-      <li class="prints-item" v-for="print in (prints as Print[])"
-        :key="print.id" @dblclick="$emit('remove', print)">
+      <li class="prints-item" v-for="print in prints" :key="print.id"
+        @dblclick="$emit('remove', print)">
         <!-- poetry -->
         <p v-if="print.verses">{{ print.verses[0].first }}..</p>
         <!-- prose -->
@@ -20,7 +20,7 @@ import type { Print } from '../stores/__types__';
 
 defineProps({
   prints: {
-    types: [] as Print[],
+    type: Array<Print>,
     required: true
   },
   isPartner: {
