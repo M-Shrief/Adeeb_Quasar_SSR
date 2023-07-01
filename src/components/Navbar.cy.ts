@@ -4,10 +4,8 @@ describe('Navbar links', () => {
   it('renders alright and reference right page when partner = null', () => {
     // see: https://on.cypress.io/mounting-vue
     cy.mount(Navbar, {
-      global: {
-        provide: {
-          partner: null,
-        },
+      props: {
+        partner: null
       }
     });
 
@@ -22,24 +20,17 @@ describe('Navbar links', () => {
 
   it('renders alright and reference right page when partner is logged in', () => {
     cy.mount(Navbar, {
-      global: {
-        provide: {
-          partner: {
-            _id: '6472fcb22451bac176fa5475',
-            name: 'Quasar SSR',
-            phone: '01023669999',
-            address: '10th street, Cairo',
-          },
+      props:{
+        partner: {
+          _id: '6472fcb22451bac176fa5475',
+          name: 'Quasar SSR',
+          phone: '01023669999',
+          address: '10th street, Cairo',
         },
-      },
+      }
     });
 
-    const partner = {
-      _id: '6472fcb22451bac176fa5475',
-      name: 'Quasar SSR',
-      phone: '01023669999',
-      address: '10th street, Cairo',
-    };
+
     cy.get('#logo').should('have.attr', 'to', '/');
     cy.get('router-link[to*="/partners/ordering"]').should('exist');
     cy.get('router-link[to*="/partners/history"]').should('exist');

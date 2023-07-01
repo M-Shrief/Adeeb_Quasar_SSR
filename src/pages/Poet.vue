@@ -24,12 +24,11 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, computed } from 'vue';
+import { onMounted, computed, inject } from 'vue';
 import { useRoute } from 'vue-router';
 // stores
 import { usePoetStore } from "../stores/poets";
 import { usePrintStore } from "../stores/prints";
-import { usePartnerStore } from '../stores/partners';
 // types
 import type { Print } from '../stores/__types__';
 // components
@@ -60,10 +59,7 @@ function removePrint(print: Print) {
   return printsStore.removePrint(print);
 }
 
-const partnerStore = usePartnerStore();
-const isPartner = computed(() => {
-  return partnerStore.getPartner ? true : false;
-})
+const isPartner = inject('isPartner') as boolean;
 </script>
 
 <style lang="scss" scoped>

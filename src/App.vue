@@ -1,6 +1,6 @@
 <template>
   <header>
-    <Navbar @logout="logout" />
+    <Navbar :partner="partner" @logout="logout" />
     <HttpPopUp />
   </header>
   <router-view v-slot="{ Component }">
@@ -23,18 +23,26 @@ import { useRouter } from 'vue-router';
 import { usePartnerStore } from './stores/partners';
 // components
 import Navbar from './components/Navbar.vue';
-// import Footer from './components/Footer.vue';
 const HttpPopUp = defineAsyncComponent(() => import('./components/NotificationsCenter/HttpPopUp.vue'))
+
 const router = useRouter();
+
 const parnterStore = usePartnerStore();
+// For Navbar
 const partner = computed(() => {
   return parnterStore.getPartner
 })
-provide('partner', partner);
+
 async function logout() {
   parnterStore.logout()
   router.push('/');
 }
+
+// For Main, Poem, Poet pages.
+const isPartner = computed(() => {
+  return parnterStore.getPartner ? true : false;
+})
+provide('isPartner', isPartner);
 </script>
 
 <style lang="scss">
