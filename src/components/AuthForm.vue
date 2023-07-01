@@ -71,8 +71,8 @@ async function onSubmit(values: any) {
 <style lang="scss" scoped>
 @import '../css/mixins.scss';
 
-$secondaryColor: #D5DBB3;
-$mainColor: #1f2124;
+$mainColor: var(--text1);
+$secondaryColor: var(--surface2);
 
 #auth-form {
   position: relative;

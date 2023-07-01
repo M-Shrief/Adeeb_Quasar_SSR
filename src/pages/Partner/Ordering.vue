@@ -94,8 +94,8 @@ async function prepareProse() {
 @import '../../css/mixins.scss';
 
 #prep-order {
-  $mainColor: #fff;
-  $secondaryColor: #1f2124;
+  $mainColor: var(--text1);
+  $secondaryColor: var(--surface2);
   ////////////
   display: flex;
   flex-direction: column;

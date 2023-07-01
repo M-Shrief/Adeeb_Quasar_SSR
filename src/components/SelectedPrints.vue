@@ -34,8 +34,8 @@ defineProps({
 <style lang="scss" scoped>
 @import '../css/mixins.scss';
 
-$mainColor: #fbe6c2;
-$secondaryColor: #2c3e50;
+$mainColor: var(--text1);
+$secondaryColor: var(--surface4);
 
 #selected-prints {
   position: fixed;
@@ -64,11 +64,12 @@ $secondaryColor: #2c3e50;
     margin: auto 0;
     font-size: 1rem;
     font-weight: 600;
-    color: rgba($color: $mainColor, $alpha: 0.8);
+    color: $mainColor;
+    opacity: 85%;
     text-decoration: none;
 
     &:hover {
-      color: $mainColor;
+      opacity: 100%;
     }
 
     @include mQ($breakpoint-lg) {
@@ -96,7 +97,7 @@ $secondaryColor: #2c3e50;
       padding: 0.2rem;
       margin-left: 0.3rem;
       height: 1.5rem;
-      background: rgba($color: $mainColor, $alpha: 0.8);
+      background: $mainColor;
       color: $secondaryColor;
       cursor: pointer;
 

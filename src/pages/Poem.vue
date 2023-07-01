@@ -84,8 +84,8 @@ const isPartner = inject('isPartner') as boolean;
     text-decoration: none;
   }
 
-  .poems-title {
-    color: #f6b352;
+  h2 {
+    color: var(--text1);
     text-align: center;
     font-size: 1.5rem;
     font-weight: 700;

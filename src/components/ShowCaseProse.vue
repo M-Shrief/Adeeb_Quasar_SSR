@@ -41,8 +41,8 @@ defineEmits(['print']);
 <style lang="scss" scoped>
 @import '../css/mixins.scss';
 
-$mainColor: #f6b352;
-$secondaryColor: #1f2124;
+$mainColor: var(--text1);
+$secondaryColor: var(--surface3);
 
 .title {
   font-size: 1.5rem;

@@ -47,8 +47,8 @@ defineEmits(['print']);
 <style lang="scss" scoped>
 @import '../css/mixins.scss';
 
-$mainColor: #2c3e50;
-$secondaryColor: #fbe6c2;
+$mainColor: var(--text1);
+$secondaryColor: var(--surface2);
 
 .title {
   font-size: 1.5rem;
@@ -61,7 +61,6 @@ $secondaryColor: #fbe6c2;
   padding: 0.3rem;
   margin: 1rem 0.3rem 0;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
-  border: 1px solid $mainColor;
   border-radius: 1.5rem;
 
   @include mQ($breakpoint-lg) {
@@ -108,7 +107,6 @@ $secondaryColor: #fbe6c2;
   padding: 0.3rem;
   padding-bottom: 1.5rem;
   margin: 0.5rem;
-  border: 1px solid $mainColor;
   background: $secondaryColor;
   color: $mainColor;
 

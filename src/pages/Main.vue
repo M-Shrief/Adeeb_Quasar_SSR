@@ -120,13 +120,13 @@ const isPartner = inject('isPartner') as boolean;
 }
 
 .poems-title {
-  background-color: #f6b352;
-  color: #1f2124;
+  background-color: var(--text1);
+  color: var(--surface3);
 }
 
 .poets-title {
-  background-color: #2c3e50;
-  color: #fbe6c2;
+  background-color: var(--text1);
+  color: var(--surface2);
 }
 
 @include mQ($breakpoint-lg) {

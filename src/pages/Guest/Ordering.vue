@@ -110,10 +110,13 @@ function getRandomProse(num: number) {
 <style lang="scss" scoped>
 @import '../../css/mixins.scss';
 
+$mainColor: var(--text1);
+$secondaryColor: var(--surface2);
+
 #printing {
   display: grid;
   grid-template-columns: 75% 25%;
-  color: #fff;
+  color: $mainColor;
   margin-top: 1rem;
 
   @include mQ($breakpoint-md) {
@@ -147,8 +150,7 @@ function getRandomProse(num: number) {
     display: flex;
     flex-direction: column;
     margin: 1rem;
-    background: #1f2124;
-    // margin: 0.3rem auto;
+    background: $secondaryColor;
 
 
     .verse,
@@ -229,30 +231,9 @@ function getRandomProse(num: number) {
       margin: 0.5rem auto;
       @include submit-btn
     }
-
-    // #partners-link {
-    //   position: absolute;
-    //   left: 0.8rem;
-    //   top: 0.8rem;
-    //   color: #f6b352;
-    //   border: 2px solid #f6b352;
-    //   background-color: #1f2124;
-    //   padding: 0.5rem;
-    //   border-radius: 1.5rem;
-    //   margin: 0.1rem;
-    //   text-decoration: none;
-
-    //   &:hover {
-    //     color: #1f2124;
-    //     background: #f6b352;
-    //   }
-    // }
   }
 
   #prints {
-    $mainColor: rgba($color: #fff, $alpha: .8);
-    $secondaryColor: #1f2124;
-    /////
     background: $secondaryColor;
     margin-left: 0.5rem;
     border-radius: 1rem;

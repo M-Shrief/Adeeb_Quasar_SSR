@@ -15,6 +15,7 @@
       <span v-if="partner" class="nav-item" @click="$emit('logout')">تسجيل الخروج</span>
       <router-link to="/partners" class="nav-item" active-class="active" v-else>كن
         شريكاً</router-link>
+      <ThemeSwitch class="nav-item" />
     </div>
   </nav>
 </template>
@@ -23,6 +24,9 @@
 import type { PropType } from 'vue';
 // Types
 import type { Partner } from '../stores/__types__'
+// Components
+import ThemeSwitch from './ThemeSwitch.vue';
+
 defineProps({
   partner: {
     type: Object as PropType<Partner | null>,
@@ -41,7 +45,7 @@ defineEmits(['logout']);
   flex-direction: row;
   background-color: #1f2124;
   justify-content: space-between;
-  align-items: center;
+
 
   #logo {
     color: rgba($color: #f6b352, $alpha: .8);
@@ -62,7 +66,13 @@ defineEmits(['logout']);
     }
   }
 
-  $mainColor: #FBE6C2;
+  .nav-row-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    $mainColor: #FBE6C2;
 
   .nav-item {
     padding: 0.2rem 0.4rem;
@@ -102,5 +112,6 @@ defineEmits(['logout']);
       margin: 0.1rem;
     }
   }
+}
 }
 </style>
