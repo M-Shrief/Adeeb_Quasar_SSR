@@ -17,7 +17,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineAsyncComponent, computed, provide } from 'vue';
+import { defineAsyncComponent, computed, provide, readonly } from 'vue';
 import { useRouter } from 'vue-router';
 // Stores
 import { usePartnerStore } from './stores/partners';
@@ -42,7 +42,7 @@ async function logout() {
 const isPartner = computed(() => {
   return parnterStore.getPartner ? true : false;
 })
-provide('isPartner', isPartner);
+provide('isPartner', readonly(isPartner));
 </script>
 
 <style lang="scss">
