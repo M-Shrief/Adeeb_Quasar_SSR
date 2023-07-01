@@ -1,12 +1,11 @@
 <template>
   <section id="proses">
     <h2 class="title">مختارات نثرية</h2>
-    <div :class="grid">
+    <div :class="routeName == 'poet' ? 'grid-poet' : ''">
       <div v-for="prose in proses" :key="prose.id" class="prose-item">
         <p class="qoute">{{ prose.qoute }}</p>
         <div class="justify">
-          <router-link v-if="!(route.name === 'poet')"
-            :to="'/poet/' + prose.poet.id" class="details">{{
+          <router-link v-if="!(routeName === 'poet')" :to="'/poet/' + prose.poet.id" class="details">{{
               prose.poet.name
             }}</router-link>
           <button @click="$emit('print', { id: prose.id, qoute: prose.qoute })"
@@ -31,7 +30,7 @@ defineProps({
     type: Array<Prose>,
     required: true,
   },
-  grid: {
+  routeName: {
     type: String,
     required: false,
   },

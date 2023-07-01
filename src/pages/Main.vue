@@ -8,14 +8,14 @@
         <h2 class="poems-title">القصائد</h2>
       </ShowCasePoems>
 
-      <ShowCasePoets :poets="getPoets" :grid="'grid'">
+      <ShowCasePoets :poets="getPoets">
         <h2 class="poets-title">الشعراء</h2>
       </ShowCasePoets>
 
-      <ShowCasePoetry :chosenVerses="getChosenVerses" :grid="'grid-main'"
+      <ShowCasePoetry :chosenVerses="getChosenVerses" :routeName="'main'"
         @print="(print: Print) => addPrint(print)" />
 
-      <ShowCaseProse :proses="getProses"
+      <ShowCaseProse :proses="getProses" :routeName="'main'"
         @print="(print: Print) => addPrint(print)" />
     </div>
     <SelectedPrints />

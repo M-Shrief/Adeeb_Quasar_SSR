@@ -1,7 +1,7 @@
 <template>
   <section id="chosen-verses">
     <h2 class="title">مختارات شعرية</h2>
-    <div :class="grid">
+    <div :class="routeName == 'main' ? 'grid-main' : 'grid-poet'">
       <div v-for="chosenVerse in chosenVerses" :key="chosenVerse.id"
         class="poetry-item">
         <div v-for="verse in chosenVerse.verses" :key="verse.id"
@@ -10,7 +10,7 @@
           <p class="sec" dir="ltr">{{ verse.sec }}</p>
         </div>
         <router-link :to="'/poem/' + chosenVerse.poem" class="details">{{
-          route.name == 'poet'
+          routeName == 'poet'
           ? 'القصيدة الكاملة'
           : chosenVerse.poet.name + ' - القصيدة الكاملة'
         }}</router-link>
@@ -36,7 +36,7 @@ defineProps({
     type: Array<ChosenVerse>,
     required: true,
   },
-  grid: {
+  routeName: {
     type: String,
     required: false,
   },
