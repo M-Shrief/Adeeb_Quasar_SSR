@@ -1,14 +1,16 @@
 <template>
   <section id="poems">
     <!--
-      Add a link to Poems page that shows all poems with pagination 
+      Add a link to Poems page that shows all poems with pagination
       opposite colors for the slot
     -->
     <slot />
     <div :class="grid">
       <router-link v-for="poem in props.poems" :key="poem.id"
         :to="`/poem/${poem.id}`" class="poem" replace>
+        <!-- for Main & Poem pages -->
         <p v-if="poem.poet">{{ poem.intro }} - {{ poem.poet.name }}</p>
+        <!-- for Poet's Page -->
         <p v-else>{{ poem.intro }}..</p>
       </router-link>
     </div>

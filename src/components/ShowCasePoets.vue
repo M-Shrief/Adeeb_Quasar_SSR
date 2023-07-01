@@ -1,7 +1,7 @@
 <template>
   <section id="poets">
     <slot />
-    <div :class="grid">
+    <div class="grid">
       <router-link v-for="poet in poets" :key="poet.id" :to="`/poet/${poet.id}`"
         class="poet" replace>
         <p>{{ poet.name }}</p>
@@ -15,7 +15,7 @@
 import type { Poet } from '../stores/__types__';
 defineProps({
   poets: {
-    type: Array<Poet['details']>,
+    type: Array<Poet>,
     required: true,
   },
 
