@@ -2,10 +2,8 @@
   <h3>يَسعد المتنبي بتقديم خدمات للشركات والتجار والعملاء المميزين.</h3>
   <section id="register">
 
-    <!-- show if the user will authenticate, hide if the user won't -->
     <AuthForm />
     <aside>
-      <!-- need something simple like: islamic arts, a transition for list-items and on. -->
       <h3>سجل الان للاستفادة من جميع الخدمات المُقدمة من المتنبي
       </h3>
       <ul>

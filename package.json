@@ -6,13 +6,18 @@
   "author": "M_Shrief <m.shrief.dev@proton.me>",
   "private": true,
   "scripts": {
-    "test": "echo \"No test specified\" && exit 0",
+    "test": "echo \"See package.json => scripts for available tests.\" && exit 0",
     "dev": "quasar dev --mode ssr",
-    "build": "quasar build"
+    "build": "quasar build",
+    "test:e2e": "cross-env NODE_ENV=test start-test \"quasar dev\" http-get://localhost:9000 \"cypress open --e2e\"",
+    "test:e2e:ci": "cross-env NODE_ENV=test start-test \"quasar dev\" http-get://localhost:9000 \"cypress run --e2e\"",
+    "test:component": "cross-env NODE_ENV=test cypress open --component",
+    "test:component:ci": "cross-env NODE_ENV=test cypress run --component"
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
     "axios": "^1.2.1",
+    "cypress": "^12.16.0",
     "dotenv": "^16.0.3",
     "normalize.css": "^8.0.1",
     "pinia": "^2.0.11",
@@ -25,12 +30,16 @@
   },
   "devDependencies": {
     "@quasar/app-vite": "^1.0.0",
+    "@quasar/quasar-app-extension-testing": "^2.1.0",
+    "@quasar/quasar-app-extension-testing-e2e-cypress": "^5.1.0",
     "@types/node": "^12.20.21",
     "autoprefixer": "^10.4.2",
-    "typescript": "^4.5.4"
+    "typescript": "^4.5.4",
+    "cypress": "^12.2.0",
+    "eslint-plugin-cypress": "^2.12.1"
   },
   "engines": {
-    "node": "^18 || ^16 || ^14.19",
+    "node": "^20 || ^18 || ^16 || ^14.19",
     "npm": ">= 6.13.4",
     "yarn": ">= 1.21.1"
   }
