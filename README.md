@@ -4,7 +4,8 @@
 
 - \_./css file for our app.scss and mixins.scss
 
-- _./components_ file for our contained and reusable components across the app.
+- _./components_ file for our reusable components across the app, and a
+  component test for each one of them with cypress.
 
 - _./composables_ file for our contained and reusable stateful logic across the app.
 
