@@ -53,7 +53,9 @@ module.exports = configure(function (/* ctx */) {
       // vueOptionsAPI: false,
 
       // rebuildCache: true, // rebuilds Vite/linter/etc cache on startup
-
+      alias: {
+        'quasar/dist/quasar.sass': path.resolve(__dirname, './src/css/quasar.sass'),
+      },
       // publicPath: '/',
       // analyze: true,
       env: require("dotenv").config().parsed,
